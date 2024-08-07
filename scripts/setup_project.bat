@@ -28,47 +28,49 @@ echo Setting up Prisma...
 cd %BACKEND_DIR%
 npm install @prisma/client
 npm install --save-dev prisma
-npx prisma init
 
-:: 4. Configure Prisma schema
-echo Configuring Prisma schema...
-:: Ensure the schema.prisma file is properly set up
-set SCHEMA_PRISMA_FILE=%BACKEND_DIR%\prisma\schema.prisma
-echo datasource db {
-echo   provider = "postgresql" >> %SCHEMA_PRISMA_FILE%
-echo   url      = env("DATABASE_URL") >> %SCHEMA_PRISMA_FILE%
-echo } >> %SCHEMA_PRISMA_FILE%
-echo generator client { >> %SCHEMA_PRISMA_FILE%
-echo   provider = "prisma-client-js" >> %SCHEMA_PRISMA_FILE%
-echo } >> %SCHEMA_PRISMA_FILE%
-echo model Book { >> %SCHEMA_PRISMA_FILE%
-echo   id              Int      @id @default(autoincrement()) >> %SCHEMA_PRISMA_FILE%
-echo   title           String >> %SCHEMA_PRISMA_FILE%
-echo   author          String >> %SCHEMA_PRISMA_FILE%
-echo   publicationDate DateTime >> %SCHEMA_PRISMA_FILE%
-echo   genres          String >> %SCHEMA_PRISMA_FILE%
-echo } >> %SCHEMA_PRISMA_FILE%
-echo model User { >> %SCHEMA_PRISMA_FILE%
-echo   id       Int      @id @default(autoincrement()) >> %SCHEMA_PRISMA_FILE%
-echo   username String   @unique >> %SCHEMA_PRISMA_FILE%
-echo   password String >> %SCHEMA_PRISMA_FILE%
-echo   email    String   @unique >> %SCHEMA_PRISMA_FILE%
-echo   role     Int >> %SCHEMA_PRISMA_FILE%
-echo } >> %SCHEMA_PRISMA_FILE%
+:: Prizma (default is Supabase), if you want prizma - uncomment following            
+::            npx prisma init
 
-:: 5. Update .env file for Prisma
-echo Updating .env file...
-set ENV_FILE=%BACKEND_DIR%\.env
-echo DATABASE_URL="postgresql://your_user:your_password@localhost:5432/your_database" > %ENV_FILE%
-echo JWT_SECRET=your_jwt_secret >> %ENV_FILE%
+::            :: 4. Configure Prisma schema
+::            echo Configuring Prisma schema...
+::            :: Ensure the schema.prisma file is properly set up
+::            set SCHEMA_PRISMA_FILE=%BACKEND_DIR%\prisma\schema.prisma
+::            echo datasource db {
+::            echo   provider = "postgresql" >> %SCHEMA_PRISMA_FILE%
+::          echo   url      = env("DATABASE_URL") >> %SCHEMA_PRISMA_FILE%
+::            echo } >> %SCHEMA_PRISMA_FILE%
+::            echo generator client { >> %SCHEMA_PRISMA_FILE%
+::            echo   provider = "prisma-client-js" >> %SCHEMA_PRISMA_FILE%
+::            echo } >> %SCHEMA_PRISMA_FILE%
+::            echo model Book { >> %SCHEMA_PRISMA_FILE%
+::            echo   id              Int      @id @default(autoincrement()) >> %SCHEMA_PRISMA_FILE%
+::            echo   title           String >> %SCHEMA_PRISMA_FILE%
+::            echo   author          String >> %SCHEMA_PRISMA_FILE%
+::            echo   publicationDate DateTime >> %SCHEMA_PRISMA_FILE%
+::            echo   genres          String >> %SCHEMA_PRISMA_FILE%
+::            echo } >> %SCHEMA_PRISMA_FILE%
+::            echo model User { >> %SCHEMA_PRISMA_FILE%
+::            echo   id       Int      @id @default(autoincrement()) >> %SCHEMA_PRISMA_FILE%
+::            echo   username String   @unique >> %SCHEMA_PRISMA_FILE%
+::            echo   password String >> %SCHEMA_PRISMA_FILE%
+::            echo   email    String   @unique >> %SCHEMA_PRISMA_FILE%
+::            echo   role     Int >> %SCHEMA_PRISMA_FILE%
+::            echo } >> %SCHEMA_PRISMA_FILE%
 
-:: 6. Run Prisma migrations
-echo Running Prisma migrations...
-npx prisma migrate dev --name init
+::            :: 5. Update .env file for Prisma
+::            echo Updating .env file...
+::            set ENV_FILE=%BACKEND_DIR%\.env
+::            echo DATABASE_URL="postgresql://your_user:your_password@localhost:5432/your_database" > %ENV_FILE%
+::            echo JWT_SECRET=your_jwt_secret >> %ENV_FILE%
 
-:: 7. Generate Prisma client
-echo Generating Prisma client...
-npx prisma generate
+::            :: 6. Run Prisma migrations
+::            echo Running Prisma migrations...
+::            npx prisma migrate dev --name init
+
+::            :: 7. Generate Prisma client
+::            echo Generating Prisma client...
+::            npx prisma generate
 
 :: 8. Install backend dependencies
 echo Installing backend dependencies...
