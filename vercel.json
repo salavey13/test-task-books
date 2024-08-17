@@ -19,16 +19,6 @@
             "destination": "/backend/api/$1"
         }
     ],
-    "routes": [
-        {
-            "src": "/api/(.*)",
-            "dest": "/backend/src/index.ts"
-        },
-        {
-            "src": "/(.*)",
-            "dest": "/frontend/dist/$1"
-        }
-    ],
     "outputDirectory": "frontend/dist",
     "env": {
       "SUPABASE_URL": "https://busaeeuxfwmdtsyzkbif.supabase.co",
