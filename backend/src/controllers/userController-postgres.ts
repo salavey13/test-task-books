@@ -2,10 +2,12 @@ import { Request, Response } from 'express';
 import prisma from '../prismaClient';
 import { hashPassword, generateJwtToken, comparePasswords } from '../services/authService';
 import { sendAdminConfirmation, sendAdminStatusNotification } from '../services/telegramService';
-
+interface CustomRequest extends Request {
+  userId?: number; // or string, based on your user ID type
+}
 // Register a new user
 export const registerUser = async (req: Request, res: Response) => {
-  const { email, password, telegramId, telegramUsername } = req.body;
+  const { email, password, telegramId, telegramUsername, username } = req.body;
 
   try {
     const hashedPassword = await hashPassword(password);
@@ -16,6 +18,7 @@ export const registerUser = async (req: Request, res: Response) => {
         password: hashedPassword,
         telegramId,
         telegramUsername,
+        username, // Added this field
         role: 0, // Regular user
       },
     });
@@ -32,8 +35,8 @@ export const loginUser = async (req: Request, res: Response) => {
 
   try {
     const user = await prisma.user.findUnique({ where: { email } });
-    if (user && await comparePasswords(password, user.password)) {
-      const token = generateJwtToken(user.id, user.role);
+    if (user && user.password && await comparePasswords(password, user.password)) {
+      const token = generateJwtToken(user.id);
       res.json({ token });
     } else {
       res.status(401).json({ error: 'Invalid credentials' });
@@ -43,13 +46,17 @@ export const loginUser = async (req: Request, res: Response) => {
   }
 };
 
-// Get current user
-export const getCurrentUser = async (req: Request, res: Response) => {
+// Example of how you might use it
+export const getCurrentUser = async (req: CustomRequest, res: Response) => {
   const { userId } = req;
 
   try {
-    const user = await prisma.user.findUnique({ where: { id: userId } });
-    res.json(user);
+    if (userId) {
+      const user = await prisma.user.findUnique({ where: { id: userId } });
+      res.json(user);
+    } else {
+      res.status(401).json({ error: 'Unauthorized' });
+    }
   } catch (error) {
     res.status(500).json({ error: 'Failed to get user' });
   }
@@ -74,7 +81,7 @@ export const changeUserRole = async (req: Request, res: Response) => {
 };
 
 // Request to become an admin
-export const becomeAdmin = async (req: Request, res: Response) => {
+export const becomeAdmin = async (req: CustomRequest, res: Response) => {
   const { userId } = req;
 
   try {

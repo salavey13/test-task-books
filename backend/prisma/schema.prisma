@@ -11,20 +11,17 @@ datasource db {
 
 model User {
   id              Int      @id @default(autoincrement())
+  email           String   @unique
+  password        String
+  telegramId      String?
+  telegramUsername String?
+  role            Int
   username        String
-  email           String?  @unique
-  password        String?  // Optional for Telegram users
-  telegramId      String?  @unique
-  role            Int      @default(0)
-  isAdminApproved Boolean  @default(false) // Indicates if the user has been approved as admin
 }
 
 model Book {
-  id              Int      @id @default(autoincrement())
-  title           String
-  author          String
-  publicationDate DateTime
-  genres          String[]
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
+  id             Int      @id @default(autoincrement())
+  title          String
+  author         String
+  publishedDate  DateTime
 }

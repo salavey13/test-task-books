@@ -1,13 +1,13 @@
 import { Router } from 'express';
 import { registerUser, loginUser, getCurrentUser, changeUserRole, becomeAdmin } from '../controllers/userController';
-import { authenticateUser, authenticateAdmin } from '../middleware/authMiddleware';
+import { authenticateToken } from '../middlewares/authMiddleware';
 
 const router = Router();
 
 router.post('/users/register', registerUser);
 router.post('/users/login', loginUser);
-router.get('/users/me', authenticateUser, getCurrentUser);
-router.put('/users/:id/role', authenticateAdmin, changeUserRole);
-router.post('/users/become-admin', authenticateUser, becomeAdmin);
+router.get('/users/me', authenticateToken, getCurrentUser);
+router.put('/users/:id/role', authenticateToken, changeUserRole);
+router.post('/users/become-admin', authenticateToken, becomeAdmin);
 
 export default router;

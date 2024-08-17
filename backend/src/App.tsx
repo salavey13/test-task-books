@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import BookList from './components/BookList';
 import BookDetails from './components/BookDetails';
 import AddBook from './components/AddBook';
@@ -10,11 +10,11 @@ const App: React.FC = () => {
     <Router>
       <div>
         <TelegramLogin />
-        <Switch>
-          <Route path="/" exact component={BookList} />
-          <Route path="/books/:id" component={BookDetails} />
-          <Route path="/add-book" component={AddBook} />
-        </Switch>
+        <Routes>
+          <Route path="/" element={<BookList />} />
+          <Route path="/books/:id" element={<BookDetails />} />
+          <Route path="/add-book" element={<AddBook />} />
+        </Routes>
       </div>
     </Router>
   );

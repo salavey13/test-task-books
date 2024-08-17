@@ -2,7 +2,9 @@ import { Request, Response } from 'express';
 import supabase from '../supabaseClient';
 import { hashPassword, comparePasswords, generateJwtToken } from '../services/authService';
 import { sendAdminConfirmation, sendAdminStatusNotification } from '../services/telegramService';
-
+interface CustomRequest extends Request {
+  userId?: number; // or string, based on your user ID type
+}
 // Register a new user
 export const registerUser = async (req: Request, res: Response) => {
   const { email, password, telegramId, telegramUsername } = req.body;
@@ -36,12 +38,12 @@ export const loginUser = async (req: Request, res: Response) => {
     return res.status(401).json({ error: 'Invalid credentials' });
   }
 
-  const token = generateJwtToken(user.id, user.role);
+  const token = generateJwtToken(user.id);
   res.json({ token });
 };
 
 // Get current user
-export const getCurrentUser = async (req: Request, res: Response) => {
+export const getCurrentUser = async (req: CustomRequest, res: Response) => {
   const { userId } = req;
 
   const { data: user, error } = await supabase
@@ -77,7 +79,7 @@ export const changeUserRole = async (req: Request, res: Response) => {
 };
 
 // Request to become an admin
-export const becomeAdmin = async (req: Request, res: Response) => {
+export const becomeAdmin = async (req: CustomRequest, res: Response) => {
   const { userId } = req;
 
   const { data: user, error } = await supabase
