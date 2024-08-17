@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Frontend for the Test Task Books project",
   "scripts": {
-    "start": "parcel src/index.html --port 3000",
+    "start": "parcel src/index.html --port 3001",
     "build": "parcel build src/index.html"
   },
   "dependencies": {
