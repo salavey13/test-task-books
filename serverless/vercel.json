@@ -11,8 +11,6 @@
       "destination": "/serverless/public/index.html"
     }
   ],
-  "devCommand": "npm run dev",
-  "buildCommand": "npm run build",
     "env": {
       "SUPABASE_URL": "https://busaeeuxfwmdtsyzkbif.supabase.co",
       "SUPABASE_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ1c2FlZXV4ZndtZHRzeXprYmlmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjExNjEyMjIsImV4cCI6MjAzNjczNzIyMn0.2qjj-5Ppe0eNagDG-61baS9A-IYJVfzLdNMThGnZGRs",

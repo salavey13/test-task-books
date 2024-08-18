@@ -2,12 +2,10 @@
     "name": "serverless-app",
     "version": "1.0.0",
     "description": "A serverless app using Tailwind CSS and Supabase",
-    "main": "main.js",
+    "main": "src/main.js",
     "scripts": {
         "build": "tailwindcss -i src/styles.css -o public/styles.css",
-        "dev": "node src/main.js",
-        "start": "serve public",
-        "deploy": "vercel --prod"
+        "dev": "node src/main.js"
     },
     "dependencies": {
       "@supabase/supabase-js": "^2.0.0",
