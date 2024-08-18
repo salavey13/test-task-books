@@ -3,9 +3,8 @@ import { createClient } from '@supabase/supabase-js';
 const SUPABASE_URL = process.env.SUPABASE_URL;
 const SUPABASE_KEY = process.env.SUPABASE_KEY;
 // Initialize Supabase client
-const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
-// Load Telegram WebApp script
 document.addEventListener('DOMContentLoaded', () => {
     const script = document.createElement("script");
     script.src = "https://telegram.org/js/telegram-web-app.js";
@@ -61,7 +60,7 @@ async function initUserFromTelegram(telegramUser) {
         .single();
 
     if (error) {
-        const { data: newUser, error } = await supabase
+        const { data: newUser, error: insertError } = await supabase
             .from('users')
             .insert([{
                 telegram_id,
@@ -73,8 +72,8 @@ async function initUserFromTelegram(telegramUser) {
             .select('*')
             .single();
 
-        if (error) {
-            console.error('Error registering user:', error);
+        if (insertError) {
+            console.error('Error registering user:', insertError);
             return;
         }
 
@@ -211,4 +210,3 @@ function setCurrentUser(user) {
         document.getElementById('admin-button').addEventListener('click', () => requestAdmin(user));
     }
 }
-

@@ -3,31 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <title>Supabase & Telegram WebApp</title>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.35.4/dist/umd/supabase.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-    <style>
-        /* Custom styles */
-        .hero-bg {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-    </style>
+    <title>Serverless App</title>
+    <link href="/styles.css" rel="stylesheet">
+    <script src="https://unpkg.com/alpinejs" defer></script>
 </head>
-<body class="bg-gray-100 text-gray-900 font-sans leading-normal tracking-normal">
-    <div class="hero-bg min-h-screen flex flex-col justify-center items-center">
-        <div class="max-w-xl text-center p-6 bg-white rounded-lg shadow-xl">
-            <img id="user-avatar" class="w-24 h-24 mx-auto rounded-full mb-4" src="" alt="User Avatar" hidden>
-            <h1 class="text-4xl font-bold mb-2" id="welcome-message">Welcome to Supabase & Telegram WebApp</h1>
-            <p class="text-lg mb-6" id="username"></p>
-            <button id="admin-button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mb-4 hidden">Become Admin</button>
-            <button id="fetch-books-button" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full">Fetch Books</button>
+<body class="bg-gray-100 text-gray-900">
+    <div id="app" class="container mx-auto p-4">
+        <div class="text-center mb-4">
+            <h1 id="welcome-message" class="text-2xl font-bold">Welcome to the Serverless App</h1>
+            <p id="username" class="text-xl"></p>
+            <img id="user-avatar" src="" alt="User Avatar" class="rounded-full w-24 h-24 mx-auto hidden">
+        </div>
+        <div class="flex justify-center gap-4 mb-4">
+            <button id="fetch-books-button" class="bg-blue-500 text-white px-4 py-2 rounded">Fetch Books</button>
+            <button id="admin-button" class="bg-green-500 text-white px-4 py-2 rounded hidden">Become Admin</button>
+        </div>
+        <div id="books-list"```html
+            class="space-y-2">
+            <!-- Books will be listed here -->
         </div>
     </div>
-    <div class="max-w-3xl mx-auto py-12">
-        <div class="grid gap-8 grid-cols-1 md:grid-cols-2" id="books-list"></div>
-    </div>
-    <script src="main.js"></script>
+    <script src="/main.js" defer></script>
 </body>
 </html>
+
+
