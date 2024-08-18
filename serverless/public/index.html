@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>Supabase & Telegram WebApp</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.35.4/dist/umd/supabase.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Custom styles */
+        .hero-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-900 font-sans leading-normal tracking-normal">
+    <div class="hero-bg min-h-screen flex flex-col justify-center items-center">
+        <div class="max-w-xl text-center p-6 bg-white rounded-lg shadow-xl">
+            <img id="user-avatar" class="w-24 h-24 mx-auto rounded-full mb-4" src="" alt="User Avatar" hidden>
+            <h1 class="text-4xl font-bold mb-2" id="welcome-message">Welcome to Supabase & Telegram WebApp</h1>
+            <p class="text-lg mb-6" id="username"></p>
+            <button id="admin-button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mb-4 hidden">Become Admin</button>
+            <button id="fetch-books-button" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full">Fetch Books</button>
+        </div>
+    </div>
+    <div class="max-w-3xl mx-auto py-12">
+        <div class="grid gap-8 grid-cols-1 md:grid-cols-2" id="books-list"></div>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>

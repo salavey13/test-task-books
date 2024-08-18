@@ -1,25 +1,18 @@
 {
-        "builds": [
+    "builds": [
         {
-            "src": "frontend/package.json",
-            "use": "@vercel/static-build"
-        },
-        {
-            "src": "backend/package.json",
-            "use": "@vercel/node"
+        "src": "serverless/package.json",
+        "use": "@vercel/node"
         }
     ],
     "rewrites": [
         {
-            "source": "/admin/(.*)",
-            "destination": "/frontend/dist/index.html"
-        },
-        {
-            "source": "/api/(.*)",
-            "destination": "/backend/api/$1"
+        "source": "/(.*)",
+        "destination": "/serverless/index.html"
         }
     ],
-    "outputDirectory": "frontend/dist",
+    "outputDirectory": "serverless/dist",
+    "ignoreCommand": "true",
     "env": {
       "SUPABASE_URL": "https://busaeeuxfwmdtsyzkbif.supabase.co",
       "SUPABASE_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ1c2FlZXV4ZndtZHRzeXprYmlmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjExNjEyMjIsImV4cCI6MjAzNjczNzIyMn0.2qjj-5Ppe0eNagDG-61baS9A-IYJVfzLdNMThGnZGRs",

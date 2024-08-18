@@ -1,0 +1,29 @@
+{
+    "name": "serverless-app",
+    "version": "1.0.0",
+    "description": "A serverless app using Tailwind CSS and Supabase",
+    "main": "main.js",
+    "scripts": {
+        "build": "tailwindcss -i src/styles.css -o public/styles.css",
+        "start": "serve public",
+        "deploy": "vercel --prod"
+    },
+    "dependencies": {
+      "@supabase/supabase-js": "^2.0.0",
+      "tailwindcss": "^3.2.0",
+      "postcss": "^8.3.6",
+      "autoprefixer": "^10.4.2",
+      "serve": "^13.0.2"
+    },
+    "devDependencies": {
+      "postcss-cli": "^9.1.0",
+      "postcss": "^8.3.6",
+      "autoprefixer": "^10.4.0"
+    },
+    "engines": {
+      "node": ">=14.x"
+    },
+    "author": "SALAVEY13",
+    "license": "MIT"
+  }
+  

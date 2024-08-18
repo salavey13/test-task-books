@@ -1,6 +1,84 @@
 # Test Task Books
 This project provides a backend API for managing a collection of books and a frontend for interacting with it. It includes features for user authentication (via email and Telegram), managing roles. Users can request to become admins, and current admins can confirm new admin requests via Telegram notifications. 
 
+## Project Overview
+
+### Default Serverless Setup (Tailwind CSS + Supabase)
+
+This project is configured to use Tailwind CSS for styling and Supabase as the backend service, providing a modern, serverless architecture.
+
+- **Styling**: Tailwind CSS
+- **Backend**: Supabase (without authentication for simplicity)
+- **Deployment**: Vercel (configured for serverless deployment)
+
+### Features
+
+- **User Management**: Register users based on Telegram ID and allow them to request admin access.
+- **Books Management**: Display a list of books fetched from Supabase.
+- **Admin Notifications**: Notify current admins when a new user registers or requests admin status.
+
+### Setup
+
+1. **Install Dependencies:**
+   ```bash
+   cd serverless
+   npm install
+   ```
+
+2. **Set Up Environment Variables:**
+   - Create a `.env` file with your Supabase credentials.
+
+3. **Build the Project:**
+   ```bash
+   npm run build
+   ```
+
+4. **Deploy to Vercel:**
+   ```bash
+   vercel
+   ```
+
+### Traditional Backend/Frontend Setup
+
+For those interested in the traditional setup, refer to the backend and frontend directories for instructions.
+
+## Technologies Used
+
+- **Tailwind CSS**: A utility-first CSS framework.
+- **Supabase**: An open-source Firebase alternative.
+- **Vercel**: A platform for deploying frontend frameworks and static sites.
+
+### Explanation of Tailwind CSS
+
+**Tailwind CSS** is a utility-first CSS framework where you build designs by composing small utility classes directly in your HTML. Instead of writing custom CSS for each component, you use Tailwind's pre-defined classes to style elements quickly.
+
+- **Utility Classes**: Tailwind provides a wide range of utility classes like `bg-blue-500`, `text-center`, `p-4`, `text-white`, and more. These classes can be combined to achieve complex designs.
+- **Responsive Design**: Tailwind has built-in responsive classes like `md:text-xl`, `lg:p-6`, etc., to handle different screen sizes.
+- **Customization**: Tailwind is highly customizable through its config file, allowing you to extend or override the default styles.
+
+### Optional Traditional Setup (Node.js Backend + Redis + JWT)
+
+For those interested in a more traditional setup, the project also includes a backend built with Node.js, using Redis for caching and JWT for authentication.
+
+- **Backend**: Node.js, Express.js, Redis, JWT
+- **Frontend**: Parcel-based build process
+- **Deployment**: Can be configured for Vercel or other platforms.
+
+## How to Run
+
+### Serverless Setup (Default)
+
+1. Navigate to the `serverless` directory.
+2. Run `npm install` to install dependencies.
+3. Set up your environment variables in a `.env` file.
+4. Run `npm run build` to build the project.
+5. Deploy to Vercel using `vercel` CLI.
+
+### Traditional Setup
+
+1. Navigate to the `backend` and `frontend` directories.
+2. Follow the instructions in the respective `README` files.
+3. Deploy using your preferred method.
 It includes support for both Supabase and local PostgreSQL with Redis. The project is split into two main parts: backend and frontend.
 
 ## Project Structure
@@ -55,10 +133,22 @@ test-task-books/
 │   ├── package.json
 │   ├── tsconfig.json
 │   └── .env
-│
+├── serverless
+│   ├── public/
+│   ├── src/
+│   │   ├── styles/
+│   │   │   └── index.css
+│   │   ├── scripts/
+│   │   │   └── main.js
+│   │   ├── index.html
+│   ├── tailwind.config.js
+│   ├── postcss.config.js
+│   ├── .env
+│   └── package.json
 ├── script/
 │   └── setup_project.bat            # Setup script for local development
-└── README.md
+├── README.md
+└── vercel.json
 ```
 
 ### Backend Files
