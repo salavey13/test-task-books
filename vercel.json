@@ -1,26 +1,14 @@
 {
-  "builds": [
-    {
-      "src": "serverless/package.json",
-      "use": "@vercel/node"
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/serverless/public/index.html"
-    }
-  ],
-    "env": {
+  "env": {
       "SUPABASE_URL": "https://busaeeuxfwmdtsyzkbif.supabase.co",
-      "SUPABASE_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ1c2FlZXV4ZndtZHRzeXprYmlmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjExNjEyMjIsImV4cCI6MjAzNjczNzIyMn0.2qjj-5Ppe0eNagDG-61baS9A-IYJVfzLdNMThGnZGRs",
+      "SUPABASE_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ1c2FlZXV4ZndtZHRzeXprYmlmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjExNjEyMjIsImV4cCI6MjAzNjczNzIyMn0.2qjj-5Ppe0eNagDG-61baS9A-IYJVfzLdNMThGnZGRs13",
       "DATABASE_URL": "",
       "JWT_SECRET": "your_jwt_secret",
       "TELEGRAM_BOT_TOKEN": "telegram_bot_token",
       "REDIS_URL": "",
       "EMAIL_USER": "salavey13@gmail.com",
       "EMAIL_PASSWORD": "13131313",
-      "APP_URL": "app_url",
+      "APP_URL": "https://t.me/oneSitePlsBot/books",
       "ADMIN_CHAT_IDS": "413553377"
     }
   }
