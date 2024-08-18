@@ -170,7 +170,7 @@ async function requestAdmin(user) {
     const { data, error } = await supabase
         .from('users')
         .update({ role: 1 })
-        .eq('id', user.id);
+        .eq('telegram_id', user.id);
 
     if (error) {
         console.error('Error updating user role:', error);
